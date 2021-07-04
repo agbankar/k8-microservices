@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service-d
+  name: user-service
   labels:
     app: user-service
 spec:
@@ -20,5 +20,22 @@ spec:
         - name: user-service-c
           image: user-service
           imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-s
+  labels:
+    app: user-service
+spec:
+  type: NodePort
+  ports:
+   - port: 8080
+     targetPort: 8080
+     nodePort: 8080
+  selector:
+    app: user-service
+
+
 
 
