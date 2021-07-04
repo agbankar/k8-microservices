@@ -19,7 +19,9 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <modules>
-    <module>user-service</module>
+        <module>user-service</module>
+        <module>order-service</module>
+        <module>authentication-service</module>
     </modules>
     <dependencies>
         <dependency>
