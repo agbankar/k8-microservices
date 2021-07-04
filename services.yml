@@ -1,0 +1,60 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentication-service-s
+  labels:
+    app: authentication-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31001
+  selector:
+    app: authentication-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-s
+  labels:
+    app: user-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31002
+  selector:
+    app: user-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service-s
+  labels:
+    app: order-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31003
+  selector:
+    app: order-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apigateway-service-s
+  labels:
+    app: apigateway-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31004
+  selector:
+    app: apigateway-service

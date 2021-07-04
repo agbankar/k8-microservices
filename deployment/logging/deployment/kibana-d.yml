@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-search-deployment
+spec:
+  selector:
+    matchLabels:
+      # This matches with the selector in user-service-s.yml at line no 14 , and template labels at line no 14 below
+      app: kibana
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:7.6.2
+          imagePullPolicy: IfNotPresent

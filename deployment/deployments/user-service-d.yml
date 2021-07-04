@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-d
+spec:
+  selector:
+    matchLabels:
+      # This matches with the selector in user-service-s.yml at line no 14 , and template labels at line no 14 below
+      app: user-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service-c
+          image: user-service
+          imagePullPolicy: IfNotPresent

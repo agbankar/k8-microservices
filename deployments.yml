@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-service
+  labels:
+    app: authentication-service
+spec:
+  selector:
+    matchLabels:
+      app: authentication-service
+  replicas: 1
+  template:
+    metadata:
+      name: authentication-service
+      labels:
+        app: authentication-service
+    spec:
+      containers:
+        - name: authentication-service-c
+          image: authentication-service
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  selector:
+    matchLabels:
+      app: user-service
+  replicas: 1
+  template:
+    metadata:
+      name: user-service
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service-c
+          image: user-service
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+  labels:
+    app: order-service
+spec:
+  selector:
+    matchLabels:
+      app: order-service
+  replicas: 1
+  template:
+    metadata:
+      name: order-service
+      labels:
+        app: order-service
+    spec:
+      containers:
+        - name: order-service-c
+          image: order-service
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apigateway-service
+  labels:
+    app: apigateway-service
+spec:
+  selector:
+    matchLabels:
+      app: apigateway-service
+  replicas: 1
+  template:
+    metadata:
+      name: apigateway-service
+      labels:
+        app: apigateway-service
+    spec:
+      containers:
+        - name: apigateway-service-c
+          image: apigateway
+          imagePullPolicy: IfNotPresent
