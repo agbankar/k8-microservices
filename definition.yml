@@ -103,10 +103,10 @@ metadata:
   labels:
     app: order-service
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
-      #nodePort: 31003
+      nodePort: 31003
   selector:
     app: order-service

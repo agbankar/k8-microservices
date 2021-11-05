@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-service
+  labels:
+    app: authentication-service
+spec:
+  selector:
+    matchLabels:
+      app: authentication-service
+  replicas: 1
+  template:
+    metadata:
+      name: authentication-service
+      labels:
+        app: authentication-service
+    spec:
+      containers:
+        - name: authentication-service-c
+          image: authentication-service
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentication-service-s
+  labels:
+    app: authentication-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31001
+  selector:
+    app: authentication-service
