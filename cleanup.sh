@@ -1,5 +1,5 @@
-kubectl delete svc  authentication-service-s order-service-s user-service-s
+kubectl delete svc  apigateway-service-s authentication-service-s order-service-s user-service-s
 #sleep 10s
-kubectl delete deployment order-service user-service authentication-service
-docker rmi  user-service:latest order-service:latest authentication-service
+kubectl delete deployment apigateway-service order-service user-service authentication-service
+docker  container prune -f &&  docker image prune -f
 #docker rmi $(docker images | grep "^<none>" | awk "{print $3}")

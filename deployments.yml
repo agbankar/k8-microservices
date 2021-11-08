@@ -63,50 +63,25 @@ spec:
         - name: order-service-c
           image: order-service
           imagePullPolicy: IfNotPresent
-
-
 ---
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: authentication-service-s
+  name: apigateway-service
   labels:
-    app: authentication-service
+    app: apigateway-service
 spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 31001
   selector:
-    app: authentication-service
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: user-service-s
-  labels:
-    app: user-service
-spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 31002
-  selector:
-    app: user-service
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: order-service-s
-  labels:
-    app: order-service
-spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 31003
-  selector:
-    app: order-service
+    matchLabels:
+      app: apigateway-service
+  replicas: 1
+  template:
+    metadata:
+      name: apigateway-service
+      labels:
+        app: apigateway-service
+    spec:
+      containers:
+        - name: apigateway-service-c
+          image: apigateway
+          imagePullPolicy: IfNotPresent
