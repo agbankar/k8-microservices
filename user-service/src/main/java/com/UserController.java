@@ -12,9 +12,12 @@ public class UserController {
 
     @GetMapping("/getUser/{id}")
     public ResponseEntity<User> getUser(@PathVariable String id) {
-        User ashish = new User(1, "ashish");
+        Order order = OrderServiceProxy.getOrder(1);
+        System.out.println("order object is "+order);
 
-        return ResponseEntity.ok(ashish);
+            return ResponseEntity.ok(new User(2,"manish",order));
+
+
     }
 
 }
