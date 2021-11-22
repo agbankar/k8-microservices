@@ -1,4 +1,4 @@
-package com;
+package com.users;
 
 public class Order {
     private int orderId;
