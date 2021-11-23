@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastic-search-deployment
+spec:
+  selector:
+    matchLabels:
+      # This matches with the selector in user-service-s.yml at line no 14 , and template labels at line no 14 below
+      app: elastic-search
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: elastic-search
+    spec:
+      containers:
+        - name: elastic-search
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+          env:
+            - name: ES_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+          ulimits:
+            memlock:
+              soft: -1
+              hard: -1
+          imagePullPolicy: IfNotPresent

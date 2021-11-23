@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-deployment
+spec:
+  selector:
+    matchLabels:
+      # This matches with the selector in order-service-s.yml at line no 14 , and template labels at line no 14 below
+      app: order-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+        - name: order-service-c
+          image: order-service
+          imagePullPolicy: IfNotPresent
+---
