@@ -1,8 +1,11 @@
 # Service Ports:
 
-- Authentication-service: 31001
-- User-service: 31002
+- User-service: 31001
 - Order-service: 31002
+- Authentication-service: 31003
+- Elastic-search: 31004
+- Kibana: 31005
+
 
 # Services
 

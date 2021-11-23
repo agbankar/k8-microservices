@@ -16,13 +16,10 @@ public class UserController {
 
     @GetMapping("/getUser/{id}")
     public ResponseEntity<User> getUser(@PathVariable String id) {
-        logger.debug("Ashish");
-        logger.info("Ashish");
+        Order order = OrderServiceProxy.getOrder(1);
+        System.out.println("order object is "+order);
 
-        //Order order = OrderServiceProxy.getOrder(1);
-        //System.out.println("order object is "+order);
-
-            return ResponseEntity.ok(new User(2,"manish",null));
+            return ResponseEntity.ok(new User(2,"manish",order));
 
 
     }

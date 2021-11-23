@@ -14,13 +14,19 @@ spec:
         app: elastic-search
     spec:
       containers:
-        - name: elastic-search
+        - name: elastic-search-c
           image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
           env:
             - name: ES_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
-          ulimits:
-            memlock:
-              soft: -1
-              hard: -1
+            - name: cluster.name
+              value: "docker-cluster"
+            - name: discovery.type
+              value: "single-node"
+            - name: bootstrap.memory_lock
+              value: "true"
+            - name: ulimits.memlock.soft
+              value: "-1"
+            - name: ulimits.memlock.hard
+              value: "-1"
           imagePullPolicy: IfNotPresent
