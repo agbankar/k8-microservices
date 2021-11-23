@@ -12,7 +12,7 @@ public class BackgroundProcess implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         for (int i = 1; i >0; i++) {
-            Thread.sleep(1*1000);
+            Thread.sleep(5*1000);
             logger.info("Hello"+i);
 
         }
