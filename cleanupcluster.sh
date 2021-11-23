@@ -1,3 +1,4 @@
+kubectl delete daemonset.apps/fluentd
 docker stop logging_elasticsearch_1 logging_kibana_1
 kubectl delete svc  authentication-service-s order-service-s user-service-s
 #sleep 10s
